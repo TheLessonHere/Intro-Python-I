@@ -22,3 +22,39 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+def main():
+
+
+  # Not Specified
+  if len(sys.argv) == 1:
+      cmonth = datetime.now().month
+      cyear = datetime.now().year
+      print(calendar.month(cyear, cmonth))
+
+  # One Argument
+  elif len(sys.argv) == 2:
+    cmonth = int(sys.argv[1])
+    if cmonth < 1 or cmonth > 12:
+      print("Please enter a valid month")
+      return
+
+    cyear = datetime.now().year
+    print(calendar.month(cyear, cmonth))
+
+  # Two Arguments
+  elif len(sys.argv) == 3:
+    cmonth = int(sys.argv[1])
+    if cmonth < 1 or cmonth > 12:
+      print("Please enter a valid month")
+      return
+    year = sys.argv[2]
+    cyear = int(year[year.find('[')+1:year.find(']')])
+    print(calendar.month(cyear, cmonth))
+
+  # Three + Arguments
+  else:
+    print("Please enter two or less arguments")
+
+if __name__ == "__main__":
+    main()
